@@ -9,6 +9,11 @@ app.secret_key = "hardcoded_flask_secret"
 # Vulnerability 2: SQL Injection
 @app.route('/search')
 def search():
+    """Searches for user records in the database by username from the request query parameters.
+    Parameters:
+        - None: This function does not take explicit parameters; it reads username from the incoming request's query string.
+    Returns:
+        - str: A string representation of the query results fetched from the users database."""
     username = request.args.get('username')
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
